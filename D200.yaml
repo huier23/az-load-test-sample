@@ -1,0 +1,29 @@
+version: v0.1
+displayName: D200
+testPlan: TimerSample.jmx
+description: ''
+engineInstances: 200
+testId: d200-timersampler
+testType: JMX
+splitAllCSVs: False
+
+configurationFiles:
+- jar/jmeter.backendlistener.azure-0.2.9.jar
+- jar/jmeter-bzm-http2-2.0.5.jar
+- jar/jmeter-plugins-manager-1.10.jar
+env:
+- name: BASE_URL_1
+  value: app-load-testing.azurewebsites.net
+- name: Threads_1
+  value: 270
+- name: Hold_Load_sec
+  value: 1800
+- name: Delay_sec
+  value: 90
+- name: Start_Time
+  value: 2024-05-22T13:55:00Z
+failureCriteria:
+- percentage(error) > 90
+autoStop:
+  errorPercentage: 95
+  timeWindow: 90
